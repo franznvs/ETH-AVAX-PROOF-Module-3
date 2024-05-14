@@ -22,8 +22,8 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 
 contract Franz is ERC20("ZENIVOS", "ZNVS") {
 
-    function mint(address to, uint256 token) public  {
-        _mint(to, token);
+    function mint(uint256 token) public {
+        _mint(msg.sender, token);
     }
 
     function burn(uint256 token) public {
