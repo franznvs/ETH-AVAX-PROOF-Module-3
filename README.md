@@ -16,18 +16,23 @@ Once you are on the Remix website, create a new file by clicking on the "+" icon
 
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.25;
+pragma solidity 0.8.20;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
 
 contract Franz is ERC20("ZENIVOS", "ZNVS") {
 
-    function mint(address to, uint256 token) public {
+    function mint(address to, uint256 token) public  {
         _mint(to, token);
     }
 
     function burn(uint256 token) public {
         _burn(msg.sender, token);
+    }
+
+    function transfer(address to, uint256 token) public override returns (bool) {
+        _transfer(msg.sender, to, token);
+        return true;
     }
 }
 ```
